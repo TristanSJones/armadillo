@@ -1,6 +1,6 @@
 # Authors
 
-armadillo was created by Tristan S Jones in 2022.
+armadillo was created by Tristan Stephens-Jones in 2022.
 
 
 All contributing authors are listed in this file below.
@@ -20,4 +20,6 @@ The rules for this file:
 -->
 
 **2022**
-- Tristan S Jones \<@TristanSJones\>
+- Tristan Stephens-Jones \<@TristanSJones\>
+- Micaela Matta \<@micaela-matta\>
+- Richard Gowers \<@richardjgowers\>
