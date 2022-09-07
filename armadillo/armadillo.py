@@ -23,7 +23,9 @@ def unit_vector(ag):
     return vec / np.sqrt((vec * vec).sum())
 #Calculates the unit vector which is required for the normal vector used to calculate alpha
 
-def find_all_rings(self):
+def find_all_rings(ring_atoms):
+#finds all the rings within a atom group of all the atoms that make up rings in the universe given
+#Each ring found is a atom group and so a list of rings is created
     g = nx.Graph()
     g.add_edges_from(u.bonds.to_indices())
     # cycle_basis gives all rings
