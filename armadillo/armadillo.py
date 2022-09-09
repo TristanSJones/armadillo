@@ -16,16 +16,30 @@ import plotly.express as px
 from MDAnalysis.lib import distances
 
 def unit_vector(ag):
+    """
+    Calculates the unit vector which is required for the normal vector
+    used to calculate alpha
+    """
     # for a 2 member atomgroup, return the unit vector
     if len(ag) != 2: #changed to a 5 memebered group?
         raise ValueError("ERROR!")
     vec = ag[1].position - ag[0].position
     return vec / np.sqrt((vec * vec).sum())
-#Calculates the unit vector which is required for the normal vector used to calculate alpha
 
-def find_all_rings(ring_atoms):
-#finds all the rings within a atom group of all the atoms that make up rings in the universe given
-#Each ring found is a atom group and so a list of rings is created
+def find_all_rings(u):
+    """
+    Finds all the rings within a given universe
+    Each ring found is a atom group and so a list of rings is created
+
+    Parameters
+    -----------
+    Universe :
+        Conatins all the atoms and their topology
+
+    Returns
+    -------
+    List of atom groups where each atom group is a ring
+     """
     g = nx.Graph()
     g.add_edges_from(u.bonds.to_indices())
     # cycle_basis gives all rings
@@ -39,9 +53,23 @@ def find_all_rings(ring_atoms):
     return rings
 
 def ring_center(self):
+    """
+    Uses center_of_geometry function within MDAnalysis to give the center of a given ring
+    """
     return self.center_of_geometry() #Gives coordinates of the center of the geometry of the ring
 
 def normal_vector(ring):
+    """
+    Takes a given ring, creates two planes. One plane is between atom 1 and atom 3,
+     the second plane is between atom 2 and atom 4.
+     The unit vector of these planes is then calculated and from this
+     the nomral is determind via the cross product of the unit vectors
+
+     Parameters
+     -----------
+     ring :
+     atom group containing the atoms of one ring
+     """
     ag1 = ring[[0, 2]] #Plane between atom 1 and atom 3
     ag2 = ring[[1, 3]] #Plane between atom 2 and atom 4
 
@@ -52,11 +80,48 @@ def normal_vector(ring):
     return normal / np.linalg.norm(normal)
 
 def ring_distance(ring_a, ring_b):
+    """
+    Caluclates the distance between the centre of geometry of two Rings by using
+    calc_bonds function with MDAnalysis. The box used is set as u.dimensions
+
+    Parameters
+    -----------
+    ring_a :
+        Atom group containing the atoms of one ring
+    ring_b :
+        Atom group containing the atoms of one ring
+
+    Returns
+    --------
+    Returns a float value, that is the distance in Å
+    """
+    center_a = ring_center(ring_a)
+    center_b = ring_center(ring_b)
     Distance = distances.calc_bonds(center_a, center_b, box=u.dimensions)
     #Takes two center geometry coords and caluclates distance between
     return Distance
 
 def ring_normal_angle(ring_a, ring_b):
+    """
+    Calculates the alpha angle between the center of geometry of two rings
+    This is done by calculating the normal vector of both rings and then
+    the cosine square is calculated by dot product of the two vectors divided
+    by the normal vectors of both multiplied together, all squared
+
+    Parameters
+    -----------
+    ring_a :
+        Atom group containing the atoms of one ring
+    ring_b :
+        Atom group containing the atoms of one ring
+
+    Returns
+    --------
+    Returns a float value, that is the alpha angle in degrees
+    """
+    vector_a = normal_vector(ring_a)
+    vector_b = normal_vector(ring_b)
+    #calcs the normal vector of both rings
     cos_normal = np.dot(vector_a, vector_b/(np.linalg.norm(vector_a)*np.linalg.norm(vector_b)))
     #calcs the cos of between the two rings
     cos_squar_normal = cos_normal*cos_normal
@@ -64,9 +129,29 @@ def ring_normal_angle(ring_a, ring_b):
     alpha_angle = np.rad2deg(np.arccos(cos_squar_normal))
     #calcs the alpha angle
     return alpha_angle
-#Calcs dot product of two  vectors divided by normal vectors of both multiplied together
 
-def pi_stacking(ring_a, ring_b, dist_max=5.0, alpha_max=np.deg2rad(45)):
+def pi_stacking(ring_a, ring_b, dist_max, alpha_max):
+    """
+    Function tests wether pi_stacking occures or not by setting constaints
+    on what is classed as pi-stacking and what is not. If the rings are below
+    dist_max and alpha_max given then pi-stacking is present
+
+    Parameters
+    -----------
+    ring_a :
+        Atom group containing the atoms of one ring
+    ring_b :
+        Atom group containing the atoms of one ring
+    dist_max : float
+        Maximum cutoff distance between a ring pair
+    alpha_max : float
+        Maximum cutoff for angle between rings for parallel and parallel displaced
+        in degrees
+
+    Returns
+    --------
+    True if the rings are pi-satcking, false if the rings are mot pi-stacking
+    """
     return ring_distance(ring_a, ring_b) < dist_max and ring_normal_angle(ring_a, ring_b) < alpha_max
     #distance between them is smaller than max distance and angle between them is smaller than max angle then pi stacking is seen
 
