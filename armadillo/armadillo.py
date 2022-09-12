@@ -33,8 +33,9 @@ def find_all_rings(u):
 
     Parameters
     -----------
-    Universe :
-        Conatins all the atoms and their topology
+    u :
+        Universie is a MDAnalysis kit that
+        conatins all the atoms and their topology
 
     Returns
     -------
@@ -90,8 +91,9 @@ def ring_distance(ring_a, ring_b, u):
         Atom group containing the atoms of one ring
     ring_b :
         Atom group containing the atoms of one ring
-    u : 
-        Universe used
+    u :
+        Universie is a MDAnalysis kit that
+        conatins all the atoms and their topology
 
     Returns
     --------
@@ -132,7 +134,7 @@ def ring_normal_angle(ring_a, ring_b):
     #calcs the alpha angle
     return alpha_angle
 
-def pi_stacking(ring_a, ring_b, dist_max, alpha_max):
+def pi_stacking(ring_a, ring_b, u, dist_max, alpha_max):
     """
     Function tests wether pi_stacking occures or not by setting constaints
     on what is classed as pi-stacking and what is not. If the rings are below
@@ -144,6 +146,9 @@ def pi_stacking(ring_a, ring_b, dist_max, alpha_max):
         Atom group containing the atoms of one ring
     ring_b :
         Atom group containing the atoms of one ring
+    u :
+        Universie is a MDAnalysis kit that
+        conatins all the atoms and their topology
     dist_max : float
         Maximum cutoff distance between a ring pair
     alpha_max : float
@@ -154,10 +159,10 @@ def pi_stacking(ring_a, ring_b, dist_max, alpha_max):
     --------
     True if the rings are pi-satcking, false if the rings are mot pi-stacking
     """
-    return ring_distance(ring_a, ring_b) < dist_max and ring_normal_angle(ring_a, ring_b) < alpha_max
+    return ring_distance(ring_a, ring_b, u) < dist_max and ring_normal_angle(ring_a, ring_b) < alpha_max
     #distance between them is smaller than max distance and angle between them is smaller than max angle then pi stacking is seen
 
-def find_pi_stacking_rings(list_of_rings, distmax, distmin,
+def find_pi_stacking_rings(ring_list, u, distmax, distmin,
                            angle_threshold_parallel, angle_threshold_tshaped):
     '''
     loops over an array-like list of ring objects. check if they are pi-stacking based on
@@ -168,8 +173,11 @@ def find_pi_stacking_rings(list_of_rings, distmax, distmin,
 
     Parameters
     -----------
-    list_of_rings :
+    ring_list :
         List of atom groups which are rings to be stacked
+    u :
+        Universie is a MDAnalysis kit that
+        conatins all the atoms and their topology
     distmax : float
         Maximum cutoff distance between a ring pair
     distmin : float
@@ -183,6 +191,15 @@ def find_pi_stacking_rings(list_of_rings, distmax, distmin,
     --------
     Returns a lists with n = [0] being ix_of_actually_pi_stacking and n= [1] ix_of_none_pi_stacking
     '''
+
+    ring_cogs = []
+    for ring in ring_list:
+        ring_cogs.append(ring.center_of_geometry())
+    #creates a list of all the center of geomtries of the rings from the ring_list
+
+    ring_cogs_array = np.array(ring_cogs)
+    #creates a numpy array as self_capped_distance requires array not list
+
     # use capped distance to select rings within 5 A, return indeces of pairs of rings
     ix_rings = mda.lib.distances.self_capped_distance(ring_cogs_array,
                                                     max_cutoff=distmax,
