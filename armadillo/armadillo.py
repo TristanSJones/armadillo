@@ -79,7 +79,7 @@ def normal_vector(ring):
     normal = np.cross(v1, v2) #Calculates normal via cross product method
     return normal / np.linalg.norm(normal)
 
-def ring_distance(ring_a, ring_b):
+def ring_distance(ring_a, ring_b, u):
     """
     Caluclates the distance between the centre of geometry of two Rings by using
     calc_bonds function with MDAnalysis. The box used is set as u.dimensions
@@ -90,6 +90,8 @@ def ring_distance(ring_a, ring_b):
         Atom group containing the atoms of one ring
     ring_b :
         Atom group containing the atoms of one ring
+    u : 
+        Universe used
 
     Returns
     --------
