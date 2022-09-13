@@ -21,7 +21,7 @@ def unit_vector(ag):
     used to calculate alpha
     """
     # for a 2 member atomgroup, return the unit vector
-    if len(ag) != 2: #changed to a 5 memebered group?
+    if len(ag) != 2:
         raise ValueError("ERROR!")
     vec = ag[1].position - ag[0].position
     return vec / np.sqrt((vec * vec).sum())
