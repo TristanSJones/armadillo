@@ -34,8 +34,7 @@ def find_all_rings(u):
     Parameters
     -----------
     u :
-        Universie is a MDAnalysis kit that
-        conatins all the atoms and their topology
+        MDAnalysis Universe containing topology and trajectory info
 
     Returns
     -------
@@ -92,8 +91,7 @@ def ring_distance(ring_a, ring_b, u):
     ring_b :
         Atom group containing the atoms of one ring
     u :
-        Universie is a MDAnalysis kit that
-        conatins all the atoms and their topology
+        MDAnalysis Universe containing topology and trajectory info
 
     Returns
     --------
@@ -147,8 +145,7 @@ def pi_stacking(ring_a, ring_b, u, dist_max, alpha_max):
     ring_b :
         Atom group containing the atoms of one ring
     u :
-        Universie is a MDAnalysis kit that
-        conatins all the atoms and their topology
+        MDAnalysis Universe containing topology and trajectory info
     dist_max : float
         Maximum cutoff distance between a ring pair
     alpha_max : float
@@ -176,8 +173,7 @@ def find_pi_stacking_rings(ring_list, u, distmax, distmin,
     ring_list :
         List of atom groups which are rings to be stacked
     u :
-        Universie is a MDAnalysis kit that
-        conatins all the atoms and their topology
+        MDAnalysis Universe containing topology and trajectory info
     distmax : float
         Maximum cutoff distance between a ring pair
     distmin : float
@@ -194,7 +190,7 @@ def find_pi_stacking_rings(ring_list, u, distmax, distmin,
 
     ring_cogs = []
     for ring in ring_list:
-        ring_cogs.append(ring.center_of_geometry())
+        ring_cogs.append(ring_center(ring))
     #creates a list of all the center of geomtries of the rings from the ring_list
 
     ring_cogs_array = np.array(ring_cogs)
