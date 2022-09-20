@@ -185,7 +185,7 @@ def find_pi_stacking_rings(ring_list, u, distmax, distmin,
 
     Returns
     --------
-    Returns a lists with n = [0] being ix_of_actually_pi_stacking and n= [1] ix_of_none_pi_stacking
+    Returns a lists of all the pi_stacking rings
     '''
 
     ring_cogs = []
