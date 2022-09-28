@@ -244,7 +244,7 @@ def pi_stacking_distribution(parallel_stacking, t_shaped, ring_list, u):
     -----------
     parallel_stacking :
         List of atoms groups which are the parrallel pi-stacking ring pairs
-    ring_b :
+    t_shaped :
         List of atoms groups which are the t-shaphed pi-stacking ring pairs
     ring_list :
         List of atom groups which are rings to be stacked
