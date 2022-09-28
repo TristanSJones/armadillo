@@ -61,6 +61,6 @@ def test_find_pi_stacking_rings():
     """Tests that when a list of rings is passed through the function two lists
     are created that have a known length for stacking and not stacking"""
     ring_list = armadillo.find_all_rings(u)
-    thio_stacking = armadillo.find_pi_stacking_rings(ring_list, u, distmax=5.0, distmin=2.0,
+    thio_stacking, t_shaped = armadillo.find_pi_stacking_rings(ring_list, u, distmax=5.0, distmin=2.0,
                                angle_threshold_parallel=45, angle_threshold_tshaped=80)
-    assert len(thio_stacking) == 135
+    assert len(thio_stacking) == 118 and len(t_shaped) == 17

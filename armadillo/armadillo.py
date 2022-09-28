@@ -185,7 +185,7 @@ def find_pi_stacking_rings(ring_list, u, distmax, distmin,
 
     Returns
     --------
-    Returns a lists of all the pi_stacking rings
+    Returns a lists with n = [0] being ix_of_actually_pi_stacking and n= [1] ix_t_shaped_pi_stacking
     '''
 
     ring_cogs = []
@@ -211,6 +211,7 @@ def find_pi_stacking_rings(ring_list, u, distmax, distmin,
 
     # now check angle between normal of ring a and distance vector
     ix_of_actually_pi_stacking=[]
+    ix_t_shaped_pi_stacking=[]
 
     for a, b in ring_couples_to_stack:
 
@@ -224,8 +225,12 @@ def find_pi_stacking_rings(ring_list, u, distmax, distmin,
         alpha = np.rad2deg(np.arccos(cos_squar)) #calculates the angle
 
 
-        if alpha < angle_threshold_parallel or alpha > angle_threshold_tshaped:
+        if alpha < angle_threshold_parallel:
             #angle_theshold for stacking chosen by user
             ix_of_actually_pi_stacking.append([a, b])
 
-    return ix_of_actually_pi_stacking
+        if alpha >angle_threshold_tshaped:
+            #angle_theshold_tshaped for t_shaped stacking chosen by user
+            ix_t_shaped_pi_stacking.append([a, b])
+
+    return ix_of_actually_pi_stacking, ix_t_shaped_pi_stacking
