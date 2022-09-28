@@ -234,3 +234,74 @@ def find_pi_stacking_rings(ring_list, u, distmax, distmin,
             ix_t_shaped_pi_stacking.append([a, b])
 
     return ix_of_actually_pi_stacking, ix_t_shaped_pi_stacking
+
+def pi_stacking_distribution(parallel_stacking, t_shaped, ring_list, u):
+    """
+    Function plots a graph showing the distribution of inter-ring distances and angles
+    for pi-stacking rings
+
+    Parameters
+    -----------
+    parallel_stacking :
+        List of atoms groups which are the parrallel pi-stacking ring pairs
+    ring_b :
+        List of atoms groups which are the t-shaphed pi-stacking ring pairs
+    ring_list :
+        List of atom groups which are rings to be stacked
+    u :
+        MDAnalysis Universe containing topology and trajectory info
+
+
+    Returns
+    --------
+    Scatter plot of all the stacking rings. With parrallel coloured in blue and
+    t-shaped coloured in red
+    """
+
+    #Calculating alpha for the parrallel pi-stacking ring pairs
+    alpha_pi_stacking=[]
+    for a, b in parallel_stacking:
+        vector_a = normal_vector(ring_list[a])
+        vector_b = normal_vector(ring_list[b])
+
+        alpha_stack = ring_normal_angle(ring_list[a], ring_list[b])
+        alpha_pi_stacking.append([alpha_stack])
+
+    #Calculating distance between the parrallel pi-stacking ring pairs
+    distance_pi_stacking = []
+    for a, b in parallel_stacking:
+        center_a = ring_list[a].center_of_geometry()
+        center_b = ring_list[b].center_of_geometry()
+
+        distance = ring_distance(ring_list[a], ring_list[b], u)
+        distance_pi_stacking.append(distance)
+
+    #Calculating alpha for the t-shaped pi-stacking ring pairs
+    alpha_t_shaped_stacking = []
+    for a, b in t_shaped:
+        vector_a = normal_vector(ring_list[a])
+        vector_b = normal_vector(ring_list[b])
+
+        alpha_t = ring_normal_angle(ring_list[a], ring_list[b])
+        alpha_t_shaped_stacking.append([alpha_t])
+
+    #Calculating distance between the t-shaped pi-stacking ring pairs
+    distance_t_shaped_stacking = []
+    for a, b in t_shaped:
+        center_a = ring_list[a].center_of_geometry()
+        center_b = ring_list[b].center_of_geometry()
+
+        distance_t = ring_distance(ring_list[a], ring_list[b], u)
+        distance_t_shaped_stacking.append(distance_t)
+
+    #plotting scatter graph
+    fig=plt.figure()
+    ax=fig.add_axes([0,0,1,1])
+    ax.scatter(distance_pi_stacking, alpha_pi_stacking, color='b', label='Parallel', marker='x')
+    ax.scatter(distance_t_shaped_stacking, alpha_t_shaped_stacking, color='r', label='T-Shaped', marker='x')
+    ax.set_xlabel('Distance between Center of Geometry (Å)')
+    ax.set_ylabel('Alpha (deg)')
+    ax.set_title('π-Stacking Rings')
+    plt.legend(loc="upper left")
+
+    return plt.show()
