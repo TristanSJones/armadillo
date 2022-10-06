@@ -73,11 +73,118 @@ pip install -e ".[test,doc]"
 
 ### Pi-Stacking Definition
 
-![pi-stacking-def](pi_stacking_figure.png)
+![pi-stacking-def](docs/pi_stacking_figure.png)
 
 ### Workflow Example
 
-![Workflow](work_flow.drawio.png)
+![Workflow](docs/work_flow.drawio.png)
+
+### Test File Example
+
+# Example  armadillo Pi-Stacking Run Through
+
+# Import armadillo and MDanalysis
+
+
+```
+import armadillo
+import MDAnalysis as mda
+```
+
+Loading universe
+
+
+```
+u = mda.Universe('g2T-TT_aw_KF.prmtop', 'g2T-TT_aw_KF_05_prod.nc')
+```
+
+Atomgroup containing atoms that make up rings
+
+
+```
+ag = sum(u.atoms.fragments[:20])
+```
+
+Calling the function to find all the rings
+
+
+```
+ring_list = armadillo.find_all_rings(ag, u)
+```
+
+# Looping over the trajectory to produce all the pi-stacking rings
+
+
+```
+pi_parallel_stacking=[]
+pi_t_shaped = []
+for ts in u.trajectory[:25:5]:
+    parallel_stacking, t_shaped = armadillo.find_pi_stacking_rings(ring_list, ag)
+
+    pi_parallel_stacking.append(parallel_stacking)
+    pi_t_shaped.append(t_shaped)
+```
+
+# Plotting distrubution of pi-stacking rings
+
+
+```
+armadillo.pi_stacking_distribution(pi_parallel_stacking[4], pi_t_shaped[4], ring_list, ag, u, frame=20)
+```
+
+
+
+![png](output_12_0.png)
+
+
+
+# Stacked rings can be given tempfactors to be visualized in VMD
+
+First flatten parrallel and t-shaped
+
+
+```
+flat_parallel_pi_stacking = list(armadillo.itertools.chain.from_iterable(pi_parallel_stacking[4]))
+flat_t_shaped_pi_stacking = list(armadillo.itertools.chain.from_iterable(pi_t_shaped[4]))
+```
+
+Create atomgroups for the two lists
+
+
+```
+pi_ag = sum([ring_list[ix] for ix in flat_parallel_pi_stacking])
+t_ag = sum([ring_list[ix] for ix in flat_t_shaped_pi_stacking])
+```
+
+Add tempfactors to the universe
+
+
+```python
+u.add_TopologyAttr('tempfactors')
+```
+
+Assign tempfactors to stacking rings
+
+
+```python
+pi_ag.tempfactors=2
+t_ag.tempfactors=3
+```
+
+Write pdb file with these tempfactors and visulise in VMD using beta colouring
+
+
+```python
+#u.atoms.write('beta_example.pdb')
+```
+
+![beta_presentation_figure.PNG](attachment:beta_presentation_figure.PNG)
+
+
+```python
+
+```
+
 
 ### Copyright
 
