@@ -73,11 +73,11 @@ pip install -e ".[test,doc]"
 
 ### Pi-Stacking Definition
 
-![pi-stacking-def.png](attachment:pi-stacking-def.png)
+![pi-stacking-def](pi_stacking_figure.png)
 
 ### Workflow Example
 
-![Workflow](C:\Users\k2255489\pistacking\SummerCCP5PiStacking\work_flow.drawio.png)
+![Workflow](work_flow.drawio.png)
 
 ### Copyright
 
