@@ -71,11 +71,11 @@ the dependencies required for tests and docs with:
 pip install -e ".[test,doc]"
 ```
 
-### Pi-Stacking Definition
+# Pi-Stacking Definition
 
 ![pi-stacking-def](docs/pi_stacking_figure.png)
 
-### Workflow Example
+# Workflow
 
 ![Workflow](docs/work_flow.drawio.png)
 <<<<<<< HEAD
