@@ -178,11 +178,9 @@ Write pdb file with these tempfactors and visulise in VMD using beta colouring
 ```python
 u.atoms.write('beta_example.pdb')
 ```
-```
-Red - None Stacking
-Light Blue - Parallel/Parallel Displaced Stacking
-Dark Blue - T-Shaped Stacking
-```
+### Red - None Stacking
+### Light Blue - Parallel/Parallel Displaced Stacking
+### Dark Blue - T-Shaped Stacking
 ![beta_presentation_figure.PNG](docs/beta_vmd_figure.PNG)
 
 
