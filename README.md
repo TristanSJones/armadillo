@@ -135,7 +135,7 @@ armadillo.pi_stacking_distribution(pi_parallel_stacking[4], pi_t_shaped[4], ring
 
 
 
-![png](output_12_0.png)
+![png](docs/example_armadillo_output.png)
 
 
 
@@ -179,7 +179,7 @@ Write pdb file with these tempfactors and visulise in VMD using beta colouring
 #u.atoms.write('beta_example.pdb')
 ```
 
-![beta_presentation_figure.PNG](attachment:beta_presentation_figure.PNG)
+![beta_presentation_figure.PNG](docs/beta_vmd_figure.PNG)
 
 
 ```python
