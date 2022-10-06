@@ -61,7 +61,7 @@ conda deactivate
 
 # Workflow
 
-                                    ![Workflow](docs/work_flow.drawio.png)
+![Workflow](docs/work_flow.drawio.png)
 
 # Example armadillo Pi-Stacking Run Through
 
