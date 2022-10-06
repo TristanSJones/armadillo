@@ -82,9 +82,9 @@ pip install -e ".[test,doc]"
 
 ### Test File Example
 
-# Example  armadillo Pi-Stacking Run Through
+# Example armadillo Pi-Stacking Run Through
 
-# Import armadillo and MDanalysis
+Import armadillo and MDanalysis
 
 
 ```
@@ -113,7 +113,7 @@ Calling the function to find all the rings
 ring_list = armadillo.find_all_rings(ag, u)
 ```
 
-# Looping over the trajectory to produce all the pi-stacking rings
+Looping over the trajectory to produce all the pi-stacking rings
 
 
 ```
@@ -126,7 +126,7 @@ for ts in u.trajectory[:25:5]:
     pi_t_shaped.append(t_shaped)
 ```
 
-# Plotting distrubution of pi-stacking rings
+Plotting distrubution of pi-stacking rings
 
 
 ```
@@ -139,7 +139,7 @@ armadillo.pi_stacking_distribution(pi_parallel_stacking[4], pi_t_shaped[4], ring
 
 
 
-# Stacked rings can be given tempfactors to be visualized in VMD
+Stacked rings can be given tempfactors to be visualized in VMD
 
 First flatten parrallel and t-shaped
 
