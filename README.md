@@ -174,9 +174,9 @@ and is available under the GNU General Public License, version 3 (see the file [
 Copyright (c) 2022, Tristan Stephens-Jones
 
 
-#### Acknowledgements
+# Acknowledgements
+armadillo was created by the follow [Authors](https://github.com/TristanSJones/armadillo/blob/main/AUTHORS.md)
 
 Project based on the
 [MDAnalysis Cookiecutter](https://github.com/MDAnalysis/cookiecutter-mda) version 0.1.
 Please cite [MDAnalysis](https://github.com/MDAnalysis/mdanalysis#citation) when using armadillo in published work.
-[Authors](https://github.com/TristanSJones/armadillo/blob/main/AUTHORS.md)
