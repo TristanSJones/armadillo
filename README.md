@@ -78,7 +78,6 @@ pip install -e ".[test,doc]"
 # Workflow
 
 ![Workflow](docs/work_flow.drawio.png)
-<<<<<<< HEAD
 
 # Example armadillo Pi-Stacking Run Through
 
