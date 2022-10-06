@@ -9,7 +9,9 @@ armadillo
 
 # Π-Stacking Toolkit
 The aim of the project was to create a toolkit to identify π-stacking interactions using graph theory. This is because the description of interactions between π-conjugated groups is fundamental for many applications of molecular simulations: from protein-drug interactions, to the self-organisation and properties of conjugated polymers, liquid crystals and molecular solids including metal organic frameworks. For instance, for organic semiconducting materials π-stacking is correlated to molecular orbital overlap, and ultimately to charge/exciton transport.
+
 The issue, however, is that there is no generalised agreement on the exact definition of these interactions and therefor a lack of standardised analysing tool. Unlike hydrogen bonds, which can be detected by most molecular analysis tools, π-stacking and similar interactions are not as well codified. The solution to this is to develop a standardised description of interactions between aromatic groups that relies on geometric criteria and implementing a corresponding Python toolkit to detect them.
+
 The project has created a python toolkit which when supplied with a topology and trajectory file is able to produce a list of rings that are π-stacking with one another. From this the toolkit can also be used to plot this data and create .pdb file so that the stacking rings can be visualized. In addition to this the toolkit is highly customisable by the user as the distance and alpha constraints can be altered by the user from the default values that have been set.
 
 
