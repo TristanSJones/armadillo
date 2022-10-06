@@ -50,21 +50,6 @@ And when you are finished, you can exit the virtual environment with:
 conda deactivate
 ```
 
-#### With pip
-
-To build the package from source, run:
-
-```
-pip install -e .
-```
-
-If you want to create a development environment, install
-the dependencies required for tests and docs with:
-
-```
-pip install -e ".[test,doc]"
-```
-
 # Pi-Stacking Definition
 
 ![pi-stacking-def](docs/pi_stacking_figure.png)
