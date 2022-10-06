@@ -1,15 +1,15 @@
 name: armadillo-test
 channels: 
-  - conda-forge 
-  - defaults
+  - conda-forge
 dependencies:
-    # Base depends
-  - python
-  - pip
-
-    # MDAnalysis
-  
   - MDAnalysis
+  - numpy
+  - networkx
+  - itertools
+  - nglview
+  - matplotlib
+  - seaborn
+  - plotly
   
 
     # Testing
@@ -17,8 +17,4 @@ dependencies:
   - pytest-cov
   - pytest-xdist
   - codecov
-
-    # Pip-only installs
-  #- pip:
-  #  - codecov
 

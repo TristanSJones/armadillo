@@ -214,7 +214,6 @@ def find_pi_stacking_rings(ring_list, ag, distmax=5.0, distmin=2.0,
 
     # now check angle between normal of ring a and distance vector
     ix_of_actually_pi_stacking=[]
-
     ix_t_shaped_pi_stacking=[]
 
     for a, b in ring_couples_to_stack:
@@ -262,8 +261,9 @@ def pi_stacking_distribution(parallel_stacking, t_shaped, ring_list, ag, u, fram
 
     Returns
     --------
-    Scatter plot of all the stacking rings. With parallel coloured in blue and
-    t-shaped coloured in red
+    Scatter plot of all the stacking rings
+    parallel = blue 
+    t-shaped = red
     """
 
     u.trajectory[frame]
