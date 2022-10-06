@@ -179,4 +179,4 @@ Copyright (c) 2022, Tristan Stephens-Jones
 Project based on the
 [MDAnalysis Cookiecutter](https://github.com/MDAnalysis/cookiecutter-mda) version 0.1.
 Please cite [MDAnalysis](https://github.com/MDAnalysis/mdanalysis#citation) when using armadillo in published work.
-Authors - AUTHORS.md
+[Authors](https://github.com/TristanSJones/armadillo/blob/main/AUTHORS.md)
