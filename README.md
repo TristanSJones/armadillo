@@ -71,6 +71,10 @@ the dependencies required for tests and docs with:
 pip install -e ".[test,doc]"
 ```
 
+### Workflow Example
+
+![Workflow](C:\Users\k2255489\pistacking\SummerCCP5PiStacking\work_flow.drawio.png)
+
 ### Copyright
 
 The armadillo source code is hosted at https://github.com/TristanSJones/armadillo
