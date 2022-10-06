@@ -38,12 +38,6 @@ conda env update --name armadillo --file devtools/conda-envs/test_env.yaml
 conda env update --name armadillo --file docs/requirements.yaml
 ```
 
-Build this package from source:
-
-```
-pip install -e .
-```
-
 If you want to update your dependencies (which can be risky!), run:
 
 ```
