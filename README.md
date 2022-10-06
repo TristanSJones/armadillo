@@ -80,8 +80,6 @@ pip install -e ".[test,doc]"
 ![Workflow](docs/work_flow.drawio.png)
 <<<<<<< HEAD
 
-### Test File Example
-
 # Example armadillo Pi-Stacking Run Through
 
 Import armadillo and MDanalysis
