@@ -182,11 +182,7 @@ u.atoms.write('beta_example.pdb')
 ![beta_presentation_figure.PNG](docs/beta_vmd_figure.PNG)
 
 
-```python
-
-```
-
-### Copyright
+# Copyright
 
 The armadillo source code is hosted at https://github.com/TristanSJones/armadillo
 and is available under the GNU General Public License, version 3 (see the file [LICENSE](https://github.com/TristanSJones/armadillo/blob/main/LICENSE)).
