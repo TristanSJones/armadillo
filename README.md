@@ -78,6 +78,7 @@ pip install -e ".[test,doc]"
 ### Workflow Example
 
 ![Workflow](docs/work_flow.drawio.png)
+<<<<<<< HEAD
 
 ### Test File Example
 
@@ -185,6 +186,8 @@ Write pdb file with these tempfactors and visulise in VMD using beta colouring
 
 ```
 
+=======
+>>>>>>> 5d1aa6518209a8a15b1999e99adce6ad8e0c74ab
 
 ### Copyright
 
