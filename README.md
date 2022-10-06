@@ -121,7 +121,7 @@ armadillo.pi_stacking_distribution(pi_parallel_stacking[4], pi_t_shaped[4], ring
 
 
 
-Stacked rings can be given tempfactors to be visualized in VMD
+### Stacked rings can be given tempfactors to be visualized in VMD
 
 First flatten parrallel and t-shaped
 
