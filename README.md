@@ -23,7 +23,7 @@ To build armadillo from source,
 we highly recommend using virtual environments.
 If possible, we strongly recommend that you use
 [Anaconda](https://docs.conda.io/en/latest/) as your package manager.
-Below we provide instructions both for `conda`
+Below we provide instructions for `conda`
 
 #### With conda
 
