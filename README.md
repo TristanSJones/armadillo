@@ -8,11 +8,11 @@ armadillo
 | **Community** | [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)  [![Powered by MDAnalysis](https://img.shields.io/badge/powered%20by-MDAnalysis-orange.svg?logoWidth=16&logo=data:image/x-icon;base64,AAABAAEAEBAAAAEAIAAoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJD+XwCY/fEAkf3uAJf97wGT/a+HfHaoiIWE7n9/f+6Hh4fvgICAjwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACT/yYAlP//AJ///wCg//8JjvOchXly1oaGhv+Ghob/j4+P/39/f3IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJH8aQCY/8wAkv2kfY+elJ6al/yVlZX7iIiI8H9/f7h/f38UAAAAAAAAAAAAAAAAAAAAAAAAAAB/f38egYF/noqAebF8gYaagnx3oFpUUtZpaWr/WFhY8zo6OmT///8BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgICAn46Ojv+Hh4b/jouJ/4iGhfcAAADnAAAA/wAAAP8AAADIAAAAAwCj/zIAnf2VAJD/PAAAAAAAAAAAAAAAAICAgNGHh4f/gICA/4SEhP+Xl5f/AwMD/wAAAP8AAAD/AAAA/wAAAB8Aov9/ALr//wCS/Z0AAAAAAAAAAAAAAACBgYGOjo6O/4mJif+Pj4//iYmJ/wAAAOAAAAD+AAAA/wAAAP8AAABhAP7+FgCi/38Axf4fAAAAAAAAAAAAAAAAiIiID4GBgYKCgoKogoB+fYSEgZhgYGDZXl5e/m9vb/9ISEjpEBAQxw8AAFQAAAAAAAAANQAAADcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjo6Mb5iYmP+cnJz/jY2N95CQkO4pKSn/AAAA7gAAAP0AAAD7AAAAhgAAAAEAAAAAAAAAAACL/gsAkv2uAJX/QQAAAAB9fX3egoKC/4CAgP+NjY3/c3Nz+wAAAP8AAAD/AAAA/wAAAPUAAAAcAAAAAAAAAAAAnP4NAJL9rgCR/0YAAAAAfX19w4ODg/98fHz/i4uL/4qKivwAAAD/AAAA/wAAAP8AAAD1AAAAGwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALGxsVyqqqr/mpqa/6mpqf9KSUn/AAAA5QAAAPkAAAD5AAAAhQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADkUFBSuZ2dn/3V1df8uLi7bAAAATgBGfyQAAAA2AAAAMwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB0AAADoAAAA/wAAAP8AAAD/AAAAWgC3/2AAnv3eAJ/+dgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9AAAA/wAAAP8AAAD/AAAA/wAKDzEAnP3WAKn//wCS/OgAf/8MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIQAAANwAAADtAAAA7QAAAMAAABUMAJn9gwCe/e0Aj/2LAP//AQAAAAAAAAAA)](https://www.mdanalysis.org)|
 
 # Π-Stacking Toolkit
-The aim of the project was to create a toolkit to identify π-stacking interactions using graph theory. This is because the description of interactions between π-conjugated groups is fundamental for many applications of molecular simulations: from protein-drug interactions, to the self-organisation and properties of conjugated polymers, liquid crystals and molecular solids including metal organic frameworks. For instance, for organic semiconducting materials π-stacking is correlated to molecular orbital overlap, and ultimately to charge/exciton transport.
+<!--- The aim of the project was to create a toolkit to identify π-stacking interactions using graph theory. This is because the description of interactions between π-conjugated groups is fundamental for many applications of molecular simulations: from protein-drug interactions, to the self-organisation and properties of conjugated polymers, liquid crystals and molecular solids including metal organic frameworks. For instance, for organic semiconducting materials π-stacking is correlated to molecular orbital overlap, and ultimately to charge/exciton transport. --->
 
-The issue, however, is that there is no generalised agreement on the exact definition of these interactions and therefor a lack of standardised analysing tool. Unlike hydrogen bonds, which can be detected by most molecular analysis tools, π-stacking and similar interactions are not as well codified. The solution to this is to develop a standardised description of interactions between aromatic groups that relies on geometric criteria and implementing a corresponding Python toolkit to detect them.
+<!--- The issue, however, is that there is no generalised agreement on the exact definition of these interactions and therefor a lack of standardised analysing tool. Unlike hydrogen bonds, which can be detected by most molecular analysis tools, π-stacking and similar interactions are not as well codified. The solution to this is to develop a standardised description of interactions between aromatic groups that relies on geometric criteria and implementing a corresponding Python toolkit to detect them. --->
 
-The project has created a python toolkit which when supplied with a topology and trajectory file is able to produce a list of rings that are π-stacking with one another. From this the toolkit can also be used to plot this data and create .pdb file so that the stacking rings can be visualized. In addition to this the toolkit is highly customisable by the user as the distance and alpha constraints can be altered by the user from the default values that have been set.
+Armadillo is a Python toolkit which when supplied with a topology and trajectory file is able to produce a list of rings that are π-stacking with one another. From this the toolkit can also be used to plot this data and create .pdb file so that the stacking rings can be visualized. In addition to this the toolkit is highly customisable by the user as the distance and alpha constraints can be altered by the user from the default values that have been set.
 
 
 armadillo is bound by a [Code of Conduct](https://github.com/TristanSJones/armadillo/blob/main/CODE_OF_CONDUCT.md).
@@ -77,14 +77,14 @@ Loading universe
 
 
 ```
-u = mda.Universe('g2T-TT_aw_KF.prmtop', 'g2T-TT_aw_KF_05_prod.nc')
+u = mda.Universe('topology.prmtop', 'trajectory.nc')
 ```
 
 Atomgroup containing atoms that make up rings
 
 
 ```
-ag = sum(u.atoms.fragments[:20])
+ag = sum(u.atoms.fragments[:20]) 
 ```
 
 Calling the function to find all the rings
@@ -122,7 +122,7 @@ armadillo.pi_stacking_distribution(pi_parallel_stacking[4], pi_t_shaped[4], ring
 
 ### Stacked rings can be given tempfactors to be visualized in VMD
 
-First flatten parrallel and t-shaped
+First flatten parallel and t-shaped
 
 
 ```
@@ -170,7 +170,7 @@ u.atoms.write('beta_example.pdb')
 The armadillo source code is hosted at https://github.com/TristanSJones/armadillo
 and is available under the GNU General Public License, version 3 (see the file [LICENSE](https://github.com/TristanSJones/armadillo/blob/main/LICENSE)).
 
-Copyright (c) 2022, Tristan Stephens-Jones
+Copyright (c) 2023, Tristan Stephens-Jones
 
 
 # Acknowledgements
