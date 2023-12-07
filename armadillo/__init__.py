@@ -4,7 +4,7 @@ pi stacking project
 """
 
 # Add imports here
-from .armadillo import canvas
+#from .armadillo import canvas ##edit HNT canvas does not exist in armadillo.armadillo
 
 # Handle versioneer
 from ._version import get_versions
