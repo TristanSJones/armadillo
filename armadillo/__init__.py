@@ -4,7 +4,7 @@ pi stacking project
 """
 
 # Add imports here
-from .armadillo import canvas
+#from .armadillo import canvas
 
 # Handle versioneer
 from ._version import get_versions
