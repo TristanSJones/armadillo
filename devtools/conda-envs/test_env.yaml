@@ -5,7 +5,7 @@ dependencies:
   - MDAnalysis
   - numpy
   - networkx
-  - itertools
+  #- itertools
   - nglview
   - matplotlib
   - seaborn
