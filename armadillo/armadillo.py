@@ -303,8 +303,10 @@ def pi_stacking_distribution(parallel_stacking, t_shaped, ring_list, ag, u, fram
 
         distance_t = ring_distance(ring_list[a], ring_list[b], ag)
         distance_t_shaped_stacking.append(distance_t)
+    return distance_pi_stacking, alpha_pi_stacking, distance_t_shaped_stacking, alpha_t_shaped_stacking
 
     #plotting scatter graph
+    def plot_pi_stacking(distance_pi_stacking, alpha_pi_stacking, distance_t_shaped_stacking, alpha_t_shaped_stacking):  
     fig=plt.figure()
     ax=fig.add_axes([0,0,1,1])
     ax.scatter(distance_pi_stacking, alpha_pi_stacking, color='b', label='Parallel', marker='x')
